@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/avris.unity
     guid: 582c461f0a3c9944aad7b7a7a8cf8acc
+  - enabled: 1
+    path: Assets/New Scene.unity
+    guid: 1a8765a6da1e36a4ba14144317aeb7a1
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 30b1ce59012401842bc951913439c67c, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0db20a78cabdc544da218107722dc70c, type: 2}
