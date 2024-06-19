@@ -5,8 +5,6 @@ using UnityEngine;
 public class Grid_Generator : MonoBehaviour
 {
 
-    //ROWS ARE COLUMNS AND COLUMNS ARE ROWS
-
     public GameObject gridObject;
     public int rows = 5;
     public int columns = 5;
