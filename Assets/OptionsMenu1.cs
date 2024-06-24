@@ -18,8 +18,11 @@ public class OptionsMenu1 : MonoBehaviour
 
     private Light directionalLight;
     private Dropdown drowpdown;
-    private TMP_Dropdown myDropdown;
-    private GameObject DROPDOWN;    
+    private TMP_Dropdown myDropdownWeather;
+    private TMP_Dropdown myDropdownSeed;
+    private TMP_Dropdown myDropdownSoil;
+    private TMP_Dropdown myDropdownIrrigation;
+    private GameObject BUTTONS;    
 
 
 
@@ -30,10 +33,26 @@ public class OptionsMenu1 : MonoBehaviour
     {
         //Debug.Log("pressed");
 
-        DROPDOWN = GameObject.Find("Canvas");
-        GameObject child = DROPDOWN.transform.Find("Buttons").gameObject.transform.Find("Weather").gameObject;
-        myDropdown = child.GetComponent<TMP_Dropdown>();
-        Debug.Log("found" +  myDropdown);
+        BUTTONS = GameObject.Find("Canvas");
+        // Get dropdown for weather
+        GameObject weather = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Weather").gameObject;
+        myDropdownWeather = weather.GetComponent<TMP_Dropdown>();
+        Debug.Log("found" + myDropdownWeather);
+
+        //Get dropdown for seed
+        GameObject seed = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Seed Type").gameObject;
+        myDropdownSeed = seed.GetComponent<TMP_Dropdown>();
+        Debug.Log("found" + myDropdownSeed);
+
+        //Get drowpdown for soil
+        GameObject soil = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Soil Type").gameObject;
+        myDropdownSoil = soil.GetComponent<TMP_Dropdown>();
+        Debug.Log("found" + myDropdownSoil);
+
+        //Get dropdown for irrigation
+        GameObject irrigation = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Irrigation System").gameObject;
+        myDropdownIrrigation = irrigation.GetComponent<TMP_Dropdown>();
+        Debug.Log("found" +  myDropdownIrrigation);
 
 
 
@@ -57,12 +76,12 @@ public class OptionsMenu1 : MonoBehaviour
     public void OnDropdownValueChanged(int index)
     {
         //int selectedIndex = myDropdown.value;
-        TMP_Dropdown.OptionData selectedOption = myDropdown.options[index];
+        //TMP_Dropdown.OptionData selectedOption = myDropdownWeather.options[index];
         
-        Debug.Log("Dropdown value changed! Index: " + index);
+        //Debug.Log("Dropdown value changed! Index: " + index);
 
 
-        switch (myDropdown.value)
+        switch (myDropdownWeather.value)
         {
             case 1: // Summer
                 ChangeToSummer();
@@ -78,6 +97,7 @@ public class OptionsMenu1 : MonoBehaviour
                 break;
             case 4: // Spring
                 ChangeToSpring();
+                Debug.Log("changed to spring");
                 break;
 
         }
