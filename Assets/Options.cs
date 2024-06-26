@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor.Experimental.Rendering;
 
 public class OptionsMenu1 : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class OptionsMenu1 : MonoBehaviour
     bool irrigation;
 
     public GameObject buttons;
-
+    public PipeGenerator pipeGenerator;
     private Light directionalLight;
     private Dropdown drowpdown;
     private TMP_Dropdown myDropdownWeather;
@@ -53,6 +54,9 @@ public class OptionsMenu1 : MonoBehaviour
         GameObject irrigation = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Irrigation System").gameObject;
         myDropdownIrrigation = irrigation.GetComponent<TMP_Dropdown>();
         Debug.Log("found" +  myDropdownIrrigation);
+
+        pipeGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent<PipeGenerator>();
+        Debug.Log("pipeGenerator ready");
 
 
 
@@ -102,6 +106,24 @@ public class OptionsMenu1 : MonoBehaviour
 
         }
 
+        switch (myDropdownIrrigation.value)
+        {
+            case 0: // Drip
+                changeToDrip();
+                Debug.Log("pipes activated");
+                break;
+            case 1: // Sprinkler
+                Debug.Log("changed to sprinkler");
+                break;
+            case 2: // Furrow
+                Debug.Log("changed to furrow");
+                break;
+            case 3: // Terraced
+                Debug.Log("changed to terraced");
+                break;
+
+        }
+
 
 
     }
@@ -121,5 +143,9 @@ public class OptionsMenu1 : MonoBehaviour
     private void ChangeToSpring()
     {
         SceneManager.LoadScene(6);
+    }
+    private void changeToDrip()
+    {
+        pipeGenerator.GeneratePipes();
     }
 }
