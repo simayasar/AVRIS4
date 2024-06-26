@@ -1341,10 +1341,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427307559}
+      - m_Target: {fileID: 427307557}
         m_TargetAssemblyTypeName: OptionsMenu1, Assembly-CSharp
-        m_MethodName: StartApp
-        m_Mode: 1
+        m_MethodName: OnDropdownValueChanged
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
