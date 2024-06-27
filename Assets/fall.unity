@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4022132, g: 0.3477894, b: 0.2811353, a: 1}
+  m_IndirectSpecularColor: {r: 0.4022059, g: 0.3477844, b: 0.28113347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7338,11 +7338,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427307554}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b9a6204e6272e949a29f692d52ffd7d, type: 3}
+  m_Script: {fileID: 11500000, guid: bc5556c99e8b5f242b6e69b20929d7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: {fileID: 427307554}
 --- !u!114 &427307558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11915,13 +11916,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427307554}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 427307557}
+        m_TargetAssemblyTypeName: OptionsMenu1, Assembly-CSharp
+        m_MethodName: OnDropdownValueChanged
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
