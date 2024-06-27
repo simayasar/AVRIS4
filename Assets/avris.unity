@@ -2299,6 +2299,7 @@ GameObject:
   - component: {fileID: 424624994}
   - component: {fileID: 424624995}
   - component: {fileID: 424624996}
+  - component: {fileID: 424624997}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -2415,6 +2416,19 @@ MonoBehaviour:
   startColumn: -6
   columns: 5
   spacing: 1
+--- !u!114 &424624997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424624990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07abd02490a35d44ea7a22c42b5ff530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  water: {fileID: 2186473072201136378, guid: 6f7af5c81633a004dabdc476e5c80c86, type: 3}
 --- !u!1 &427307554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,6 +2541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons: {fileID: 0}
   pipeGenerator: {fileID: 0}
+  waterGenerator: {fileID: 0}
 --- !u!1 &430678468
 GameObject:
   m_ObjectHideFlags: 0

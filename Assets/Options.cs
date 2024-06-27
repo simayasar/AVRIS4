@@ -13,10 +13,14 @@ public class OptionsMenu1 : MonoBehaviour
     bool weather;
     bool seed;
     bool soil;
-    bool irrigation;
+    public bool pipes;
+    public bool furrow;
+    public bool sprinkler;
+    public bool terraced;
 
     public GameObject buttons;
     public PipeGenerator pipeGenerator;
+    public WaterGenerator waterGenerator;
     private Light directionalLight;
     private Dropdown drowpdown;
     private TMP_Dropdown myDropdownWeather;
@@ -57,6 +61,9 @@ public class OptionsMenu1 : MonoBehaviour
 
         pipeGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent<PipeGenerator>();
         Debug.Log("pipeGenerator ready");
+
+        waterGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent <WaterGenerator>();
+        Debug.Log("waterGenerator ready");
 
 
 
@@ -116,6 +123,7 @@ public class OptionsMenu1 : MonoBehaviour
                 Debug.Log("changed to sprinkler");
                 break;
             case 2: // Furrow
+                changeToFurrow();
                 Debug.Log("changed to furrow");
                 break;
             case 3: // Terraced
@@ -123,6 +131,8 @@ public class OptionsMenu1 : MonoBehaviour
                 break;
 
         }
+
+
 
 
 
@@ -146,6 +156,11 @@ public class OptionsMenu1 : MonoBehaviour
     }
     private void changeToDrip()
     {
+        //waterGenerator.DeactivateWater();
         pipeGenerator.GeneratePipes();
+    }
+    private void changeToFurrow()
+    {
+        waterGenerator.GenerateWater();
     }
 }
