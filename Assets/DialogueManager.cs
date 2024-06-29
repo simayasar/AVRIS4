@@ -9,10 +9,11 @@ public class DialogueManager : MonoBehaviour
 
     private string[][] dialogues = new string[][]
     {
-        new string[] { "Hello! I am up here but I'll answer any questions you may have.", "Seeds", "Soil","Irrigation" },
-        new string[] { "Seeds are essential for plant growth.", "Back to main menu." },
-        new string[] { "Soil provides nutrients and support.", "Back to main menu." },
-        new string[] { "Furrow systems work best for plants that need a lot of water.", "Back to main menu." }
+        new string[] { "Welcome! How can I help you?", "Seeds", "Soil", "Irrigation" },
+        new string[] { "Seeds are crucial for starting new plants.", "Back", "Types" },
+        new string[] { "Soil is the foundation for plant growth.", "Back", "Types." },
+        new string[] { "There are various types of seeds, including heirloom, organic, and hybrid seeds.", "Back " },
+        new string[] { "Different soil types include sandy, clay, and loamy soil.", "Back" }
     };
 
     private int currentDialogueIndex = 0;
@@ -43,22 +44,26 @@ public class DialogueManager : MonoBehaviour
 
     public void OnOptionSelected(int optionIndex)
     {
-        if (currentDialogueIndex == 0)
+        switch (currentDialogueIndex)
         {
-            // Main menu options
-            if (optionIndex == 1)
-            {
-                ShowDialogue(1);
-            }
-            else if (optionIndex == 2)
-            {
-                ShowDialogue(2);
-            }
-        }
-        else
-        {
-            // Sub-menu options (only one option to go back to the main menu)
-            ShowDialogue(0);
+            case 0:
+                if (optionIndex == 1) ShowDialogue(1);
+                else if (optionIndex == 2) ShowDialogue(2);
+                break;
+            case 1:
+                if (optionIndex == 1) ShowDialogue(0);
+                else if (optionIndex == 2) ShowDialogue(3);
+                break;
+            case 2:
+                if (optionIndex == 1) ShowDialogue(0);
+                else if (optionIndex == 2) ShowDialogue(4);
+                break;
+            case 3:
+                if (optionIndex == 1) ShowDialogue(1);
+                break;
+            case 4:
+                if (optionIndex == 1) ShowDialogue(2);
+                break;
         }
     }
 }
