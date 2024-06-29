@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor.Experimental.Rendering;
 
 public class OptionsMenu1 : MonoBehaviour
 {
@@ -12,10 +13,19 @@ public class OptionsMenu1 : MonoBehaviour
     bool weather;
     bool seed;
     bool soil;
-    bool irrigation;
+    public bool pipes;
+    public bool furrow;
+    public bool sprinkler;
+    public bool terraced;
 
     public GameObject buttons;
-
+    public PipeGenerator pipeGenerator;
+    public WaterGenerator waterGenerator;
+    public Grid_Generator gridGenerator;
+    public Grid_GeneratorSp grid_GeneratorSp;
+    public Grid_GeneratorW grid_GeneratorW;
+    public Grid_GeneratorF grid_GeneratorF;
+    public Grid_GeneratorSum grid_GeneratorSum;
     private Light directionalLight;
     private Dropdown drowpdown;
     private TMP_Dropdown myDropdownWeather;
@@ -54,6 +64,22 @@ public class OptionsMenu1 : MonoBehaviour
         myDropdownIrrigation = irrigation.GetComponent<TMP_Dropdown>();
         Debug.Log("found" +  myDropdownIrrigation);
 
+        pipeGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent<PipeGenerator>();
+        Debug.Log("pipeGenerator ready");
+
+        waterGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent <WaterGenerator>();
+        Debug.Log("waterGenerator ready");
+
+        gridGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_Generator>();
+        Debug.Log("waterGenerator ready");
+
+        grid_GeneratorSp = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorSp>();
+     
+        grid_GeneratorW = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorW>();
+
+        grid_GeneratorF = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorF>();
+
+        grid_GeneratorSum = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorSum>();
 
 
 
@@ -102,6 +128,42 @@ public class OptionsMenu1 : MonoBehaviour
 
         }
 
+        switch (myDropdownIrrigation.value)
+        {
+            case 0: // Drip
+                changeToDrip();
+                Debug.Log("pipes activated");
+                break;
+            case 1: // Sprinkler
+                Debug.Log("changed to sprinkler");
+                break;
+            case 2: // Furrow
+                changeToFurrow();
+                Debug.Log("changed to furrow");
+                break;
+            case 3: // Terraced
+                Debug.Log("changed to terraced");
+                break;
+
+        }
+
+        switch (myDropdownSeed.value) 
+        {
+            
+            case 0: //Tomato
+                changeToTomato();
+                break;
+            case 1: // Potato
+                Debug.Log("no potato");
+                break;
+            case 2: // Aub
+                changeToAub();
+                break;
+
+        }
+
+
+
 
 
     }
@@ -121,5 +183,53 @@ public class OptionsMenu1 : MonoBehaviour
     private void ChangeToSpring()
     {
         SceneManager.LoadScene(6);
+    }
+    private void changeToDrip()
+    {
+        //waterGenerator.DeactivateWater();
+        pipeGenerator.GeneratePipes();
+    }
+    private void changeToFurrow()
+    {
+        waterGenerator.GenerateWater();
+    }
+    private void changeToTomato() 
+    {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 3: //Fall
+                grid_GeneratorF.GenerateTomato();
+                break;
+            case 4: // Summer
+                grid_GeneratorSum.GenerateTomato();
+                break;
+            case 5: // Winter
+                grid_GeneratorW.GenerateTomato();
+                break;
+            case 6: // Spring
+                grid_GeneratorSp.GenerateTomato();
+                break;
+
+        }
+    }
+    private void changeToAub()
+    {
+        switch(SceneManager.GetActiveScene().buildIndex)
+        {
+            case 3: //Fall
+                grid_GeneratorF.GenerateAub();
+                break;
+            case 4: // Summer
+                grid_GeneratorSum.GenerateAub();
+                break;
+            case 5: // Winter
+                grid_GeneratorW.GenerateAub();
+                break;
+            case 6: // Spring
+                grid_GeneratorSp.GenerateAub();
+                break;
+
+        }
+        
     }
 }
