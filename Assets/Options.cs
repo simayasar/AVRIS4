@@ -22,6 +22,7 @@ public class OptionsMenu1 : MonoBehaviour
     public PipeGenerator pipeGenerator;
     public WaterGenerator waterGenerator;
     public Grid_Generator gridGenerator;
+    public Grid_GeneratorSp grid_GeneratorSp;
     private Light directionalLight;
     private Dropdown drowpdown;
     private TMP_Dropdown myDropdownWeather;
@@ -68,6 +69,9 @@ public class OptionsMenu1 : MonoBehaviour
 
         gridGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_Generator>();
         Debug.Log("waterGenerator ready");
+
+        grid_GeneratorSp = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorSp>();
+     
 
 
 
@@ -184,11 +188,11 @@ public class OptionsMenu1 : MonoBehaviour
     }
     private void changeToTomato() 
     {
-        gridGenerator.GenerateTomato();
+        grid_GeneratorSp.GenerateTomato();
         Debug.Log("Changed to Tomato");
     }
     private void changeToAub()
     {
-        gridGenerator.GenerateAub();
+        grid_GeneratorSp.GenerateAub();
     }
 }
