@@ -23,6 +23,9 @@ public class OptionsMenu1 : MonoBehaviour
     public WaterGenerator waterGenerator;
     public Grid_Generator gridGenerator;
     public Grid_GeneratorSp grid_GeneratorSp;
+    public Grid_GeneratorW grid_GeneratorW;
+    public Grid_GeneratorF grid_GeneratorF;
+    public Grid_GeneratorSum grid_GeneratorSum;
     private Light directionalLight;
     private Dropdown drowpdown;
     private TMP_Dropdown myDropdownWeather;
@@ -72,7 +75,11 @@ public class OptionsMenu1 : MonoBehaviour
 
         grid_GeneratorSp = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorSp>();
      
+        grid_GeneratorW = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorW>();
 
+        grid_GeneratorF = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorF>();
+
+        grid_GeneratorSum = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorSum>();
 
 
 
@@ -188,11 +195,41 @@ public class OptionsMenu1 : MonoBehaviour
     }
     private void changeToTomato() 
     {
-        grid_GeneratorSp.GenerateTomato();
-        Debug.Log("Changed to Tomato");
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 3: //Fall
+                grid_GeneratorF.GenerateTomato();
+                break;
+            case 4: // Summer
+                grid_GeneratorSum.GenerateTomato();
+                break;
+            case 5: // Winter
+                grid_GeneratorW.GenerateTomato();
+                break;
+            case 6: // Spring
+                grid_GeneratorSp.GenerateTomato();
+                break;
+
+        }
     }
     private void changeToAub()
     {
-        grid_GeneratorSp.GenerateAub();
+        switch(SceneManager.GetActiveScene().buildIndex)
+        {
+            case 3: //Fall
+                grid_GeneratorF.GenerateAub();
+                break;
+            case 4: // Summer
+                grid_GeneratorSum.GenerateAub();
+                break;
+            case 5: // Winter
+                grid_GeneratorW.GenerateAub();
+                break;
+            case 6: // Spring
+                grid_GeneratorSp.GenerateAub();
+                break;
+
+        }
+        
     }
 }
