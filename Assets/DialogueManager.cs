@@ -57,6 +57,7 @@ public class DialogueManager : MonoBehaviour
                 else if (optionIndex == 2) ShowDialogue(3);
                 else if (optionIndex == 3) ShowDialogue(4);
                 else if (optionIndex == 4) ShowDialogue(5);
+                else if (optionIndex == 5) ShowDialogue(6);
                 break;
             case 2:
                 if (optionIndex == 1) ShowDialogue(0);
