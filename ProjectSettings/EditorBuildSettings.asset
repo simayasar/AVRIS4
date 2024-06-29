@@ -11,6 +11,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/avris.unity
     guid: 582c461f0a3c9944aad7b7a7a8cf8acc
+  - enabled: 1
+    path: Assets/New Scene.unity
+    guid: 1a8765a6da1e36a4ba14144317aeb7a1
+  - enabled: 1
+    path: Assets/fall.unity
+    guid: 5fbaf4ced27484640a12b78451c6cad9
+  - enabled: 1
+    path: Assets/summer.unity
+    guid: 4de121cb48cb1ed45970ee0b97c3bfd0
+  - enabled: 1
+    path: Assets/winter.unity
+    guid: 3ea354d2e55332049bc01cd3cbc0fc3c
+  - enabled: 1
+    path: Assets/spring.unity
+    guid: 5f8e1cc7a338cea4ab2bd878abb9cf79
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 30b1ce59012401842bc951913439c67c, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0db20a78cabdc544da218107722dc70c, type: 2}
