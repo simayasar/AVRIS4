@@ -18,18 +18,25 @@ public class WaterGenerator : MonoBehaviour
         Vector3 position = new Vector3(0.0f, 0.15f, 0.0f);
         water.transform.localScale = new Vector3(1.1f, 1.0f, 4.0f);
 
-        Instantiate(water, position, Quaternion.identity);
+        GameObject newWater = Instantiate(water, position, Quaternion.identity);
+        newWater.tag = "Water";
         //options.furrow = true;
     }
 
     public void DeactivateWater()
     {
-        water.SetActive(false);
+        GameObject[] waters = GameObject.FindGameObjectsWithTag("Water");
+        foreach (GameObject water in waters)
+        {
+            Destroy(water);
+        }
         Debug.Log("water deactivated");
-        
+        //water.SetActive(false);
+        //Debug.Log("water deactivated");
+
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         

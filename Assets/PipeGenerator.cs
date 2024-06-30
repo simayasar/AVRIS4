@@ -33,19 +33,24 @@ public class PipeGenerator : MonoBehaviour
             //{
 
             //}
+            
             Vector3 position = new Vector3(i* spacing, 0.16f, 0.2f);
             pipe.transform.localScale = new Vector3(0.02f, 0.02f, 1.15f);
-
-            //modify scale
-            Instantiate(pipe, position, Quaternion.identity);
-            //options.pipes = true;
-
+            GameObject newPipe = Instantiate(pipe, position, Quaternion.identity);
+            newPipe.tag = "Pipe";
         }
     }
-    public void DeactivateWater()
+   
+    public void DeactivatePipes()
     {
-
+        GameObject[] pipes = GameObject.FindGameObjectsWithTag("Pipe");
+        foreach (GameObject pipe in pipes)
+        {
+            Destroy(pipe);
+        }
+        Debug.Log("pipes deactivated");
     }
+
 
     // Update is called once per frame
     void Update()
