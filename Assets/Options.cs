@@ -26,6 +26,7 @@ public class OptionsMenu1 : MonoBehaviour
     public Grid_GeneratorW grid_GeneratorW;
     public Grid_GeneratorF grid_GeneratorF;
     public Grid_GeneratorSum grid_GeneratorSum;
+    public TextureChanger textureChanger;
     private Light directionalLight;
     private Dropdown drowpdown;
     private TMP_Dropdown myDropdownWeather;
@@ -73,14 +74,15 @@ public class OptionsMenu1 : MonoBehaviour
         gridGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_Generator>();
         Debug.Log("waterGenerator ready");
 
+        textureChanger = GameObject.Find("XR Origin (XR Rig)").GetComponent<TextureChanger>(); 
+
         grid_GeneratorSp = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorSp>();
-     
+
         grid_GeneratorW = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorW>();
 
         grid_GeneratorF = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorF>();
 
         grid_GeneratorSum = GameObject.Find("XR Origin (XR Rig)").GetComponent<Grid_GeneratorSum>();
-
 
 
     }
@@ -101,9 +103,9 @@ public class OptionsMenu1 : MonoBehaviour
     }
     public void OnDropdownValueChanged(int index)
     {
+        DeactivateAllIrrigationSystems();
         //int selectedIndex = myDropdown.value;
         //TMP_Dropdown.OptionData selectedOption = myDropdownWeather.options[index];
-        
         //Debug.Log("Dropdown value changed! Index: " + index);
 
 
@@ -131,14 +133,14 @@ public class OptionsMenu1 : MonoBehaviour
         switch (myDropdownIrrigation.value)
         {
             case 0: // Drip
-                changeToDrip();
+                ActivateDrip();
                 Debug.Log("pipes activated");
                 break;
             case 1: // Sprinkler
                 Debug.Log("changed to sprinkler");
                 break;
             case 2: // Furrow
-                changeToFurrow();
+                ActivateFurrow();
                 Debug.Log("changed to furrow");
                 break;
             case 3: // Terraced
@@ -153,18 +155,26 @@ public class OptionsMenu1 : MonoBehaviour
             case 0: //Tomato
                 changeToTomato();
                 break;
-            case 1: // Potato
-                Debug.Log("no potato");
-                break;
-            case 2: // Aub
+      
+            case 1: // Aub
                 changeToAub();
                 break;
 
         }
 
-
-
-
+       
+        switch (myDropdownSoil.value)
+        {
+            case 0: // Sandy Soil
+                textureChanger.ChangeToLoamySoil();
+                break;
+            case 1: // Loamy Soil
+                textureChanger.ChangeToSandySoil();
+                break;
+            case 2: // Clay Soil
+               textureChanger.ChangeToClaySoil();
+                break;
+        }
 
     }
 
@@ -184,15 +194,23 @@ public class OptionsMenu1 : MonoBehaviour
     {
         SceneManager.LoadScene(6);
     }
-    private void changeToDrip()
+
+    private void DeactivateAllIrrigationSystems()
     {
-        //waterGenerator.DeactivateWater();
+        waterGenerator.DeactivateWater();
+        pipeGenerator.DeactivatePipes();
+        
+    }
+    private void ActivateDrip()
+    {
         pipeGenerator.GeneratePipes();
     }
-    private void changeToFurrow()
+
+    private void ActivateFurrow()
     {
         waterGenerator.GenerateWater();
     }
+
     private void changeToTomato() 
     {
         switch (SceneManager.GetActiveScene().buildIndex)
@@ -209,12 +227,18 @@ public class OptionsMenu1 : MonoBehaviour
             case 6: // Spring
                 grid_GeneratorSp.GenerateTomato();
                 break;
+            case 1:
+                gridGenerator.GenerateTomato();
+                break;
+
+
 
         }
     }
     private void changeToAub()
     {
-        switch(SceneManager.GetActiveScene().buildIndex)
+      
+        switch (SceneManager.GetActiveScene().buildIndex)
         {
             case 3: //Fall
                 grid_GeneratorF.GenerateAub();
@@ -228,8 +252,11 @@ public class OptionsMenu1 : MonoBehaviour
             case 6: // Spring
                 grid_GeneratorSp.GenerateAub();
                 break;
+            case 1:
+                gridGenerator.GenerateAub();
+                break;
 
         }
-        
     }
+    
 }

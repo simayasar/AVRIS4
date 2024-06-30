@@ -13,7 +13,7 @@ public class Grid_GeneratorSum : MonoBehaviour
     public int rows = 10;
     public int columns = 6;
     public float spacing = 0.5f;
-
+    private float vertSpacing = 1.0f;
     public int startrow = 0;
     public int startcolumn = -5;
 
@@ -46,17 +46,23 @@ public class Grid_GeneratorSum : MonoBehaviour
 
     public void GenerateTomato()
     {
+        vertSpacing = 2.0f;
         //Debug.Log("entered tomato function");
         for (int i = startcolumn; i < columns; i++)
         {
             //Debug.Log("entered loop");
             for (int j = startrow; j < rows; j++)
             {
-                Debug.Log("entered snd loop");
-                Vector3 position = new Vector3(i * spacing, 0, j * spacing);
-                Debug.Log("tomato position ready");
-                Instantiate(tomato, position, Quaternion.identity);
-                Debug.Log("tomato placed");
+                if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                {
+                    Debug.Log("entered snd loop");
+                    Vector3 position = new Vector3(i * spacing + 0.5f, 0, j * vertSpacing);
+                    Debug.Log("tomato position ready");
+                    Instantiate(tomato, position, Quaternion.identity);
+                    Debug.Log("tomato placed");
+
+                }
+
 
             }
         }
@@ -77,12 +83,18 @@ public class Grid_GeneratorSum : MonoBehaviour
 
     public void GenerateAub()
     {
+        vertSpacing = 1.0f;
+
         for (int i = startcolumn; i < columns; i++)
         {
             for (int j = startrow; j < rows; j++)
             {
-                Vector3 position = new Vector3(i * spacing, 0, j * spacing);
-                Instantiate(aub, position, Quaternion.identity);
+                if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                {
+                    Vector3 position = new Vector3(i * spacing, 0, j * vertSpacing);
+                    Instantiate(aub, position, Quaternion.identity);
+                }
+
 
             }
         }
