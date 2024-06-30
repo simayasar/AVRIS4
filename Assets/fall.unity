@@ -7312,11 +7312,12 @@ MonoBehaviour:
   tomato: {fileID: 2906742830765859135, guid: 78da2ace1ab76ce478600ebe37fa10fe, type: 3}
   potato: {fileID: 0}
   aub: {fileID: 1000012171661116, guid: 97c7589824dbbb24cbc2b95a9345ebb1, type: 3}
-  rows: 10
+  rows: 30
   columns: 6
-  spacing: 0.5
-  startrow: 0
-  startcolumn: -5
+  spacing: 1
+  vertSpacing: 2
+  startrow: -30
+  startcolumn: -6
 --- !u!1 &427307554
 GameObject:
   m_ObjectHideFlags: 0
