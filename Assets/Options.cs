@@ -33,6 +33,7 @@ public class OptionsMenu1 : MonoBehaviour
     private TMP_Dropdown myDropdownSeed;
     private TMP_Dropdown myDropdownSoil;
     private TMP_Dropdown myDropdownIrrigation;
+    private TMP_Dropdown myDropdownDistance;
     private GameObject BUTTONS;    
 
 
@@ -64,6 +65,10 @@ public class OptionsMenu1 : MonoBehaviour
         GameObject irrigation = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Irrigation System").gameObject;
         myDropdownIrrigation = irrigation.GetComponent<TMP_Dropdown>();
         Debug.Log("found" +  myDropdownIrrigation);
+
+        //Get dropdown fo distance
+        GameObject distance = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Distance").gameObject;
+        myDropdownDistance = distance.GetComponent<TMP_Dropdown>();
 
         pipeGenerator = GameObject.Find("XR Origin (XR Rig)").GetComponent<PipeGenerator>();
         Debug.Log("pipeGenerator ready");
@@ -173,6 +178,54 @@ public class OptionsMenu1 : MonoBehaviour
                 break;
             case 2: // Clay Soil
                textureChanger.ChangeToClaySoil();
+                break;
+        }
+
+        switch (myDropdownDistance.value)
+        {
+            case 0: //30cm
+                if (SceneManager.GetActiveScene().buildIndex == 3)
+                {
+                    grid_GeneratorF.spacing = 1;
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 4)
+                {
+                    grid_GeneratorSum.spacing = 1;
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 5)
+                {
+                    grid_GeneratorW.spacing = 1;
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 6)
+                {
+                    grid_GeneratorSum.spacing = 1;
+                }
+                else { break; }
+                
+                
+                
+                Debug.Log("Changed to 30cm");
+                break;
+            case 1: //60cm
+
+                if (SceneManager.GetActiveScene().buildIndex == 3)
+                {
+                    grid_GeneratorF.spacing = 2;
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 4)
+                {
+                    grid_GeneratorSum.spacing = 2;
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 5)
+                {
+                    grid_GeneratorW.spacing = 2;
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 6)
+                {
+                    grid_GeneratorSp.spacing = 2;
+                }
+                else { break; }
+                Debug.Log("Changed to 60cm");
                 break;
         }
 

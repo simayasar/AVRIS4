@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    private GameObject canvas;
    public void StartApp()
     {
-        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextIndex);
+        canvas = GameObject.Find("Canvas");
+        canvas.SetActive(false);
+
     }
 
     public void QuitApp()
