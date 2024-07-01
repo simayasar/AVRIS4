@@ -8,10 +8,13 @@ public class MainMenu : MonoBehaviour
 {
 
     private GameObject canvas;
+    private GameObject canvas2;
    public void StartApp()
     {
         canvas = GameObject.Find("Canvas");
+        canvas2 = GameObject.Find("Dialogue");
         canvas.SetActive(false);
+        canvas2.SetActive(false);
 
     }
 
