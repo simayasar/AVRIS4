@@ -44,7 +44,7 @@ public class OptionsMenu1 : MonoBehaviour
         //Debug.Log("pressed");
 
         BUTTONS = GameObject.Find("Canvas");
-        Debug.Log("foudn " +  BUTTONS.transform.Find("Terrain_01").gameObject);
+        Debug.Log("foudn " +  BUTTONS);
         // Get dropdown for weather
         GameObject weather = BUTTONS.transform.Find("Buttons").gameObject.transform.Find("Weather").gameObject;
         myDropdownWeather = weather.GetComponent<TMP_Dropdown>();
