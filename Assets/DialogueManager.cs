@@ -9,12 +9,14 @@ public class DialogueManager : MonoBehaviour
 
     private string[][] dialogues = new string[][]
     {
-        new string[] { "Welcome! How can I help you?", "Seeds", "Soil", "Irrigation" },
-        new string[] { "The plant you choose needs to be grown in the appropriate environment.", "Back", "Tomato", "Potato", "Aubergine" },
-        new string[] { "Tomato grows best in medium water and loamy soil. Drip irrigation is preferred.", "Back" },
-        new string[] { "Soil is the foundation for plant growth.", "Back", "Types." },
-        new string[] { "There are various types of seeds, including heirloom, organic, and hybrid seeds.", "Back" },
-        new string[] { "Different soil types include sandy, clay, and loamy soil.", "Back" }
+        new string[] { "Welcome! I am Fanny, your friendly neighbourhood farmer. How can I help you?", "Seeds", "Soil", "Irrigation" },
+        new string[] { "The plant you choose needs to be grown in the appropriate environment.", "Back", "Tomato", "Eggplant" },
+        new string[] { "Tomato grows well in sandy soil and placed close. Furrow irrigation is common, and the best season is summer.", "Back" },
+       
+        new string[] { "Eggplant grows great in loamy soil and placed far. Drip irrigation is preferred, and the good season is autumn.", "Back" },
+        new string[] { "Soil is the foundation for plant growth.", "Back", "Types" },
+        new string[] { "Loamy's porous nature makes it drain well. Sandy is best paired with drip irrigation to minimize water loss and Clay soil with furrow ensures good water hold. ", "Back" },
+        new string[] { "Drip irrigation is good for consistent water moisture and Furrow irrigation is good for maintaining water in soil that drains too quickly.", "Back" }
     };
 
     private int currentDialogueIndex = 0;
@@ -49,25 +51,35 @@ public class DialogueManager : MonoBehaviour
         {
             case 0:
                 if (optionIndex == 1) ShowDialogue(1);
-                else if (optionIndex == 2) ShowDialogue(2);
-                else if (optionIndex == 3) ShowDialogue(3);
+                else if (optionIndex == 2) ShowDialogue(5);
+                else if (optionIndex == 3) ShowDialogue(6);
                 break;
             case 1:
                 if (optionIndex == 1) ShowDialogue(0);
-                else if (optionIndex == 2) ShowDialogue(3);
-                else if (optionIndex == 3) ShowDialogue(4);
-                else if (optionIndex == 4) ShowDialogue(5);
-                else if (optionIndex == 5) ShowDialogue(6);
+                else if (optionIndex == 2) ShowDialogue(2);
+                
+                else if (optionIndex == 3) ShowDialogue(3);
+                
                 break;
             case 2:
-                if (optionIndex == 1) ShowDialogue(0);
+                if (optionIndex == 1) ShowDialogue(1);
                 else if (optionIndex == 2) ShowDialogue(4);
                 break;
             case 3:
                 if (optionIndex == 1) ShowDialogue(1);
+                
                 break;
             case 4:
-                if (optionIndex == 1) ShowDialogue(2);
+                if (optionIndex == 1) ShowDialogue(1);
+               
+                break;
+            case 5:
+                if (optionIndex == 1) ShowDialogue(0);
+                else if (optionIndex == 2) ShowDialogue(6);
+                break;
+            case 6:
+                if (optionIndex == 1) ShowDialogue(0);
+
                 break;
         }
     }
