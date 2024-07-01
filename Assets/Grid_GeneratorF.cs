@@ -47,7 +47,7 @@ public class Grid_GeneratorF : MonoBehaviour
 
     public void GenerateTomato()
     {
-        vertSpacing = 2.0f;
+        //vertSpacing = 2.0f;
         //Debug.Log("entered tomato function");
         for (int i = startcolumn; i < columns; i++)
         {
@@ -71,7 +71,7 @@ public class Grid_GeneratorF : MonoBehaviour
 
     public void GeneratePotato()
     {
-        vertSpacing = 1.0f;
+        //vertSpacing = 1.0f;
         for (int i = startcolumn; i < columns; i++)
         {
             for (int j = startrow; j < rows; j++)
@@ -89,7 +89,7 @@ public class Grid_GeneratorF : MonoBehaviour
 
     public void GenerateAub()
     {
-        vertSpacing = 1.0f;
+        //vertSpacing = 1.0f;
 
         for (int i = startcolumn; i < columns; i++)
         {

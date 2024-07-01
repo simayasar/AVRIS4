@@ -13,7 +13,7 @@ public class Grid_GeneratorSum : MonoBehaviour
     public int rows = 10;
     public int columns = 6;
     public float spacing = 0.5f;
-    private float vertSpacing = 1.0f;
+    public float vertSpacing = 1.0f;
     public int startrow = 0;
     public int startcolumn = -5;
 
@@ -46,7 +46,7 @@ public class Grid_GeneratorSum : MonoBehaviour
 
     public void GenerateTomato()
     {
-        vertSpacing = 2.0f;
+        //vertSpacing = 2.0f;
         //Debug.Log("entered tomato function");
         for (int i = startcolumn; i < columns; i++)
         {
@@ -83,7 +83,7 @@ public class Grid_GeneratorSum : MonoBehaviour
 
     public void GenerateAub()
     {
-        vertSpacing = 1.0f;
+        //vertSpacing = 1.0f;
 
         for (int i = startcolumn; i < columns; i++)
         {

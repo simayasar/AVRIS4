@@ -183,49 +183,49 @@ public class OptionsMenu1 : MonoBehaviour
 
         switch (myDropdownDistance.value)
         {
-            case 0: //30cm
+            case 1: //60cm
                 if (SceneManager.GetActiveScene().buildIndex == 3)
                 {
-                    grid_GeneratorF.spacing = 1;
+                    grid_GeneratorF.vertSpacing = 1;
                 }
                 else if (SceneManager.GetActiveScene().buildIndex == 4)
                 {
-                    grid_GeneratorSum.spacing = 1;
+                    grid_GeneratorSum.vertSpacing = 1;
                 }
                 else if (SceneManager.GetActiveScene().buildIndex == 5)
                 {
-                    grid_GeneratorW.spacing = 1;
+                    grid_GeneratorW.vertSpacing = 1;
                 }
                 else if (SceneManager.GetActiveScene().buildIndex == 6)
                 {
-                    grid_GeneratorSum.spacing = 1;
+                    grid_GeneratorSum.vertSpacing = 1;
                 }
                 else { break; }
                 
                 
                 
-                Debug.Log("Changed to 30cm");
+                Debug.Log("Changed Distance to 60cm" );
                 break;
-            case 1: //60cm
+            case 0: //30cm
 
                 if (SceneManager.GetActiveScene().buildIndex == 3)
                 {
-                    grid_GeneratorF.spacing = 2;
+                    grid_GeneratorF.vertSpacing = 2;
                 }
                 else if (SceneManager.GetActiveScene().buildIndex == 4)
                 {
-                    grid_GeneratorSum.spacing = 2;
+                    grid_GeneratorSum.vertSpacing = 2;
                 }
                 else if (SceneManager.GetActiveScene().buildIndex == 5)
                 {
-                    grid_GeneratorW.spacing = 2;
+                    grid_GeneratorW.vertSpacing = 2;
                 }
                 else if (SceneManager.GetActiveScene().buildIndex == 6)
                 {
-                    grid_GeneratorSp.spacing = 2;
+                    grid_GeneratorSp.vertSpacing = 2;
                 }
                 else { break; }
-                Debug.Log("Changed to 60cm");
+                Debug.Log("Changed to 30cm");
                 break;
         }
 

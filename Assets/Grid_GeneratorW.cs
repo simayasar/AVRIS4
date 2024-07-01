@@ -13,7 +13,7 @@ public class Grid_GeneratorW : MonoBehaviour
     public int rows = 10;
     public int columns = 6;
     public float spacing = 0.5f;
-    private float vertSpacing = 1.0f;
+    public float vertSpacing = 1.0f;
 
     public int startrow = 0;
     public int startcolumn = -5;
