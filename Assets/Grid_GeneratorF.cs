@@ -19,12 +19,19 @@ public class Grid_GeneratorF : MonoBehaviour
     public int startcolumn = -6;
 
 
+    public GameObject badTomatoPrefab;
+    public GameObject okTomatoPrefab;
+    public GameObject goodTomatoPrefab;
+    public GameObject badAubPrefab;
+    public GameObject okAubPrefab;
+    public GameObject goodAubPrefab;
+
 
     // Start is called before the first frame update
     void Start()
     {
         GenerateGrid();
-        Debug.Log("fuck you");
+        Debug.Log("Grid initialized");
     }
 
     public void GenerateGrid()
@@ -45,6 +52,7 @@ public class Grid_GeneratorF : MonoBehaviour
 
     }
 
+    /*
     public void GenerateTomato()
     {
         vertSpacing = 2.0f;
@@ -105,6 +113,170 @@ public class Grid_GeneratorF : MonoBehaviour
             }
         }
     }
+
+    */
+
+    public void GenerateTomato()
+    {
+        DeactivatePlants();
+        for (int i = startcolumn; i < columns; i++)
+        {
+            for (int j = startrow; j < rows; j++)
+            {
+                Vector3 position = new Vector3(i * spacing, 0.2f, j * spacing);
+                GameObject newTomato = Instantiate(tomato, position, Quaternion.identity);
+                newTomato.tag = "Tomato";
+                Debug.Log("Tomato placed");
+            }
+        }
+    }
+
+
+    public void GenerateAub()
+    {
+        DeactivatePlants();
+        for (int i = startcolumn; i < columns; i++)
+        {
+            for (int j = startrow; j < rows; j++)
+            {
+                Vector3 position = new Vector3(i * spacing, 0.2f, j * spacing);
+                GameObject newAub = Instantiate(aub, position, Quaternion.identity);
+                newAub.tag = "Aub";
+                Debug.Log($"Aub placed at {position}");
+            }
+        }
+    }
+
+
+
+    public void DeactivatePlants()
+    {
+        GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
+        foreach (GameObject plant in plants)
+        {
+            Destroy(plant);
+        }
+        GameObject[] tomatoes = GameObject.FindGameObjectsWithTag("Tomato");
+        foreach (GameObject tomato in tomatoes)
+        {
+            Destroy(tomato);
+        }
+
+        GameObject[] aubs = GameObject.FindGameObjectsWithTag("Aub");
+        foreach (GameObject aub in aubs)
+        {
+            Destroy(aub);
+        }
+        Debug.Log("All plants deactivated");
+    }
+
+
+    public void GeneratePlants(string seedType, int score)
+    {
+        DeactivatePlants();
+
+        GameObject plantPrefab = null;
+
+        Debug.Log($"Generating plants for seed type: {seedType} with score: {score}");
+
+        if (seedType == "Tomato")
+        {
+            if (score >= 0 && score <= 1) plantPrefab = badTomatoPrefab;
+            else if (score == 2) plantPrefab = okTomatoPrefab;
+            else if (score >= 3 && score <= 4) plantPrefab = goodTomatoPrefab;
+        }
+        else if (seedType == "Aub")
+        {
+            if (score >= 0 && score <= 1) plantPrefab = badAubPrefab;
+            else if (score == 2) plantPrefab = okAubPrefab;
+            else if (score >= 3 && score <= 4) plantPrefab = goodAubPrefab;
+        }
+
+        if (plantPrefab != null)
+        {
+            for (int i = startcolumn; i < columns; i++)
+            {
+                for (int j = startrow; j < rows; j++)
+                {
+                    Vector3 position = new Vector3(i * spacing, 0.2f, j * spacing);
+                    GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
+                    newPlant.tag = "Plant";
+                    Debug.Log($"{seedType} placed with score {score}");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("No plant prefab found");
+        }
+    }
+
+    /*
+    public void GeneratePlants(string seedType, int score)
+    {
+        DeactivatePlants();
+
+        GameObject plantPrefab = null;
+
+        Debug.Log($"Generating plants for seed type: {seedType} with score: {score}");
+
+        if (seedType == "Tomato")
+        {
+            if (score >= 0 && score <= 1)
+            {
+                plantPrefab = badTomatoPrefab;
+                Debug.Log("Selected badTomatoPrefab");
+            }
+            else if (score == 2)
+            {
+                plantPrefab = okTomatoPrefab;
+                Debug.Log("Selected okTomatoPrefab");
+            }
+            else if (score >= 3 && score <= 4)
+            {
+                plantPrefab = goodTomatoPrefab;
+                Debug.Log("Selected goodTomatoPrefab");
+            }
+        }
+        else if (seedType == "Aub")
+        {
+            if (score >= 0 && score <= 1)
+            {
+                plantPrefab = badAubPrefab;
+                Debug.Log("Selected badAubPrefab");
+            }
+            else if (score == 2)
+            {
+                plantPrefab = okAubPrefab;
+                Debug.Log("Selected okAubPrefab");
+            }
+            else if (score >= 3 && score <= 4)
+            {
+                plantPrefab = goodAubPrefab;
+                Debug.Log("Selected goodAubPrefab");
+            }
+        }
+
+        if (plantPrefab != null)
+        {
+            for (int i = startcolumn; i < columns; i++)
+            {
+                for (int j = startrow; j < rows; j++)
+                {
+                    Vector3 position = new Vector3(i * spacing + 0.5f, 0, j * vertSpacing);
+                    GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
+                    newPlant.tag = "Plant";
+                    Debug.Log($"Placed {seedType} at {position} with score {score}");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("No plant prefab found for the given seed type and score");
+        }
+    }
+    */
+
 
     // Update is called once per frame
     void Update()

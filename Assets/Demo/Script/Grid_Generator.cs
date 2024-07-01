@@ -7,8 +7,14 @@ public class Grid_Generator : MonoBehaviour
 
     public GameObject gridObject;
     public GameObject tomato;
-    public GameObject potato;
     public GameObject aub;
+
+    public GameObject badTomatoPrefab;
+    public GameObject okTomatoPrefab;
+    public GameObject goodTomatoPrefab;
+    public GameObject badAubPrefab;
+    public GameObject okAubPrefab;
+    public GameObject goodAubPrefab;
 
     public int rows = 10;
     public int columns = 6;
@@ -16,8 +22,10 @@ public class Grid_Generator : MonoBehaviour
 
     public int startrow = 0;
     public int startcolumn = -5;
+    public float vertSpacing = 1.0f;
 
-   
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +52,7 @@ public class Grid_Generator : MonoBehaviour
     }
 
 
-
+    /*
     //ekledim
     public void DeactivatePlants()
     {
@@ -61,6 +69,30 @@ public class Grid_Generator : MonoBehaviour
             Destroy(aub);
         }
         Debug.Log("All plants deactivated");
+    }*/
+
+    //try
+    public void DeactivatePlants()
+    {
+        GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
+        foreach (GameObject plant in plants)
+        {
+            Destroy(plant);
+        }
+        GameObject[] tomatoes = GameObject.FindGameObjectsWithTag("Tomato");
+        foreach (GameObject tomato in tomatoes)
+        {
+            Destroy(tomato);
+        }
+
+        GameObject[] aubs = GameObject.FindGameObjectsWithTag("Aub");
+        foreach (GameObject aub in aubs)
+        {
+            Destroy(aub);
+        }
+
+
+        Debug.Log("All plants deactivated");
     }
 
     public void GenerateTomato()
@@ -70,10 +102,13 @@ public class Grid_Generator : MonoBehaviour
         {
             for (int j = startrow; j < rows; j++)
             {
-                Vector3 position = new Vector3(i * spacing, 0, j * spacing);
-                GameObject newTomato = Instantiate(tomato, position, Quaternion.identity);
-                newTomato.tag = "Tomato";
-                Debug.Log("Tomato placed");
+                if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                {
+                    Vector3 position = new Vector3(i * spacing + 0.5f, 0.2f, j * vertSpacing);
+                    GameObject newTomato = Instantiate(tomato, position, Quaternion.identity);
+                    newTomato.tag = "Tomato";
+                    Debug.Log("Tomato placed");
+                }
             }
         }
     }
@@ -86,10 +121,65 @@ public class Grid_Generator : MonoBehaviour
         {
             for (int j = startrow; j < rows; j++)
             {
-                Vector3 position = new Vector3(i * spacing, 0, j * spacing);
-                GameObject newAub = Instantiate(aub, position, Quaternion.identity);
-                newAub.tag = "Aub";
+                if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                {
+                    Vector3 position = new Vector3(i * spacing + 0.5f, 0.2f, j * vertSpacing);
+                    GameObject newAub = Instantiate(aub, position, Quaternion.identity);
+                    newAub.tag = "Aub";
+                    Debug.Log($"Aub placed at {position}");
+                }
+
             }
+        }
+    }
+
+    //try
+    public void GeneratePlants(string seedType, int score)
+    {
+        DeactivatePlants();
+
+        GameObject plantPrefab = null;
+
+        Debug.Log($"Generating plants for seed type: {seedType} with score: {score}");
+
+        if (seedType == "Tomato")
+        {
+            if (score >= 0 && score <= 1) plantPrefab = badTomatoPrefab;
+            else if (score == 2) plantPrefab = okTomatoPrefab;
+            else if (score >= 3 && score <= 4) plantPrefab = goodTomatoPrefab;
+        }
+        else if (seedType == "Aub")
+        {
+            if (score >= 0 && score <= 1) plantPrefab = badAubPrefab;
+            else if (score == 2) plantPrefab = okAubPrefab;
+            else if (score >= 3 && score <= 4) plantPrefab = goodAubPrefab;
+        }
+
+        if (plantPrefab != null)
+        {
+            Debug.Log("jgdwkchskjhwdwwwwwwwwwwwwwww"+ vertSpacing);
+            for (int i = startcolumn; i < columns; i++)
+            {
+                for (int j = startrow; j < rows; j++)
+                {
+                    //Vector3 position = new Vector3(i * spacing, 0.2f, j * spacing);
+                    //GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
+                    //newPlant.tag = "Plant";
+                    //Debug.Log($"{seedType} placed with score {score}");
+
+                    if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                    {
+                        Vector3 position = new Vector3(i * spacing + 0.5f, 0.2f, j * vertSpacing);
+                        GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
+                        newPlant.tag = "Plant";
+                        Debug.Log($"{seedType} placed with score {score}");
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("No plant prefab found");
         }
     }
 
@@ -99,44 +189,6 @@ public class Grid_Generator : MonoBehaviour
     }
 
 }    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
