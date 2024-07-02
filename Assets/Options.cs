@@ -170,18 +170,18 @@ public class OptionsMenu1 : MonoBehaviour
 
         switch (myDropdownIrrigation.value)
         {
-            case 0: // Drip
+            case 1: // Drip
                 ActivateDrip();
                 Debug.Log("pipes activated");
                 break;
-            case 1: // Sprinkler
+            case 2: // Sprinkler
                 Debug.Log("changed to sprinkler");
                 break;
-            case 2: // Furrow
+            case 3: // Furrow
                 ActivateFurrow();
                 Debug.Log("changed to furrow");
                 break;
-            case 3: // Terraced
+            case 4: // Terraced
                 Debug.Log("changed to terraced");
                 break;
 
@@ -190,11 +190,11 @@ public class OptionsMenu1 : MonoBehaviour
         switch (myDropdownSeed.value) 
         {
             
-            case 0: //Tomato
+            case 1: //Tomato
                 changeToTomato();
                 break;
       
-            case 1: // Aub
+            case 2: // Aub
                 changeToAub();
                 break;
 
@@ -203,13 +203,13 @@ public class OptionsMenu1 : MonoBehaviour
        
         switch (myDropdownSoil.value)
         {
-            case 0: // Sandy Soil
+            case 1: // Sandy Soil
                 textureChanger.ChangeToLoamySoil();
                 break;
-            case 1: // Loamy Soil
+            case 2: // Loamy Soil
                 textureChanger.ChangeToSandySoil();
                 break;
-            case 2: // Clay Soil
+            case 3: // Clay Soil
                textureChanger.ChangeToClaySoil();
                 break;
         }
@@ -217,7 +217,7 @@ public class OptionsMenu1 : MonoBehaviour
 
         switch (myDropdownDistance.value)
         {
-            case 0: //60cm
+            case 1: //60cm
                 if (SceneManager.GetActiveScene().buildIndex == 3)
                 {
                     grid_GeneratorF.vertSpacing = 1;
@@ -244,7 +244,7 @@ public class OptionsMenu1 : MonoBehaviour
 
                 Debug.Log("Changed Distance to 60cm");
                 break;
-            case 1: //30cm
+            case 2: //30cm
 
                 if (SceneManager.GetActiveScene().buildIndex == 3)
                 {
@@ -466,7 +466,7 @@ public class OptionsMenu1 : MonoBehaviour
 
         string selectedWeather = myDropdownWeather.options[myDropdownWeather.value].text;
         // Season evaluation
-        if (seedType == "Tomato") //summer
+        if (seedType == "Tomato") //spring
         {
             if (selectedWeather == "Spring")
             {
@@ -489,7 +489,7 @@ public class OptionsMenu1 : MonoBehaviour
         // Soil type evaluation
         if (seedType == "Tomato") //sandy soil
         {
-            if (selectedSoil == "Loamy soil")
+            if (selectedSoil == "Sandy soil")
             {
                 score++;
                 Debug.Log("Soil match for Tomato: Loamy soil");
@@ -497,7 +497,7 @@ public class OptionsMenu1 : MonoBehaviour
         }
         else if (seedType == "Aub")//loamy soil
         {
-            if (selectedSoil == "Clay soil")
+            if (selectedSoil == "Loamy soil")
             {
                 score++;
                 Debug.Log("Soil match for Aub: Clay soil");
@@ -509,7 +509,7 @@ public class OptionsMenu1 : MonoBehaviour
         // Irrigation system evaluation
         if (seedType == "Tomato") //furrow
         {
-            if (selectedIrrigation == "Drip")
+            if (selectedIrrigation == "Furrow")
             {
                 score++;
                 Debug.Log("Irrigation match for Tomato: Drip");
@@ -517,7 +517,7 @@ public class OptionsMenu1 : MonoBehaviour
         }
         else if (seedType == "Aub")//drip
         {
-            if (selectedIrrigation == "Furrow")
+            if (selectedIrrigation == "Drip")
             {
                 score++;
                 Debug.Log("Irrigation match for Aub: Furrow");
