@@ -3462,12 +3462,12 @@ MonoBehaviour:
   tomato: {fileID: 2630425031254273193, guid: ff4399c5c516b6145b031f40e03b2334, type: 3}
   potato: {fileID: 0}
   aub: {fileID: 2630425031254273193, guid: ff4399c5c516b6145b031f40e03b2334, type: 3}
-  rows: 10
+  rows: 30
   columns: 6
-  spacing: 0.5
-  vertSpacing: 1
-  startrow: 0
-  startcolumn: -5
+  spacing: 1
+  vertSpacing: 2
+  startrow: -30
+  startcolumn: -6
   badTomatoPrefab: {fileID: 6651310731303358679, guid: 1392dbd2be3bbd04d8e5c57b904b42ae, type: 3}
   okTomatoPrefab: {fileID: 5054277889059016994, guid: f12845bb4d1709a499e97026b8068627, type: 3}
   goodTomatoPrefab: {fileID: 9218926353566358502, guid: 98541326b56e6e14eb84d42aa2461bac, type: 3}

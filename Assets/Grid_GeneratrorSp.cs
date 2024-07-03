@@ -31,8 +31,8 @@ public class Grid_GeneratorSp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGrid();
-        Debug.Log("fuck you");
+        //GenerateGrid();
+        //Debug.Log("fuck you");
     }
 
     public void GenerateGrid()

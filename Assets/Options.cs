@@ -464,11 +464,12 @@ public class OptionsMenu1 : MonoBehaviour
 
 
 
+        int selWeather = SceneManager.GetActiveScene().buildIndex;
         string selectedWeather = myDropdownWeather.options[myDropdownWeather.value].text;
         // Season evaluation
         if (seedType == "Tomato") //spring
         {
-            if (selectedWeather == "Spring")
+            if (selWeather == 6)
             {
                 score++;
                 Debug.Log("Weather match for Tomato: Spring");
@@ -476,7 +477,7 @@ public class OptionsMenu1 : MonoBehaviour
         }
         else if (seedType == "Aub")//fall
         {
-            if (selectedWeather == "Fall")
+            if (selWeather == 3)
             {
                 score++;
                 Debug.Log("Weather match for Aub: Fall");

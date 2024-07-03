@@ -29,7 +29,7 @@ public class Grid_GeneratorSum : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGrid();
+        //GenerateGrid();
         Debug.Log("fuck you");
     }
 

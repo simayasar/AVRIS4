@@ -30,8 +30,8 @@ public class Grid_GeneratorF : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGrid();
-        Debug.Log("Grid initialized");
+        //GenerateGrid();
+        //Debug.Log("Grid initialized");
     }
 
     public void GenerateGrid()
@@ -43,7 +43,7 @@ public class Grid_GeneratorF : MonoBehaviour
             for (int j = startrow; j < rows; j++)
             {
                 Debug.Log("entered inner loop");
-                Vector3 position = new Vector3(i * spacing, 0, j * spacing);
+                Vector3 position = new Vector3(i * spacing, 0, j * vertSpacing);
                 GameObject obj = Instantiate(gridObject, position, Quaternion.identity);
                 if (!obj) Debug.LogError("Failed to instantiate gridObject!");
 
@@ -123,14 +123,17 @@ public class Grid_GeneratorF : MonoBehaviour
         {
             for (int j = startrow; j < rows; j++)
             {
-                Vector3 position = new Vector3(i * spacing, 0.2f, j * spacing);
-                GameObject newTomato = Instantiate(tomato, position, Quaternion.identity);
-                newTomato.tag = "Tomato";
-                Debug.Log("Tomato placed");
+                if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                {
+                    Vector3 position = new Vector3(i * spacing + 0.5f, 0.2f, j * vertSpacing);
+                    GameObject newTomato = Instantiate(tomato, position, Quaternion.identity);
+                    newTomato.tag = "Tomato";
+                    Debug.Log("Tomato placed");
+                }
             }
         }
-    }
 
+    }
 
     public void GenerateAub()
     {
@@ -139,10 +142,14 @@ public class Grid_GeneratorF : MonoBehaviour
         {
             for (int j = startrow; j < rows; j++)
             {
-                Vector3 position = new Vector3(i * spacing, 0.2f, j * spacing);
-                GameObject newAub = Instantiate(aub, position, Quaternion.identity);
-                newAub.tag = "Aub";
-                Debug.Log($"Aub placed at {position}");
+                if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                {
+                    Vector3 position = new Vector3(i * spacing + 0.5f, 0.2f, j * vertSpacing);
+                    GameObject newAub = Instantiate(aub, position, Quaternion.identity);
+                    newAub.tag = "Aub";
+                    Debug.Log($"Aub placed at {position}");
+                }
+
             }
         }
     }
@@ -198,10 +205,14 @@ public class Grid_GeneratorF : MonoBehaviour
             {
                 for (int j = startrow; j < rows; j++)
                 {
-                    Vector3 position = new Vector3(i * spacing, 0.2f, j * spacing);
-                    GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
-                    newPlant.tag = "Plant";
-                    Debug.Log($"{seedType} placed with score {score}");
+                    if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                    {
+                        Vector3 position = new Vector3(i * spacing, 0.2f, j * vertSpacing);
+                        GameObject newPlant = Instantiate(plantPrefab, position, Quaternion.identity);
+                        newPlant.tag = "Plant";
+                        Debug.Log($"{seedType} placed with score {score}");
+                    }
+
                 }
             }
         }
