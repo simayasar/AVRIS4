@@ -281,8 +281,8 @@ public class OptionsMenu1 : MonoBehaviour
 
         // Bitki büyümesini deðerlendir ve sonucu hesapla
         EvaluatePlantGrowth();
-        canvas = GameObject.Find("Canvas");
-        canvas.SetActive(false);
+        //canvas = GameObject.Find("Canvas");
+        //canvas.SetActive(false);
 
     }
 

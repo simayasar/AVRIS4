@@ -41,10 +41,13 @@ public class Grid_Generator : MonoBehaviour
             Debug.Log("outer loop");
             for (int j = startrow; j < rows; j++)
             {
-                Debug.Log("entered inner loop");
-                Vector3 position = new Vector3(i*spacing, 0, j*spacing);
-                GameObject obj = Instantiate(gridObject, position, Quaternion.identity);
-                if (!obj) Debug.LogError("Failed to instantiate gridObject!");
+                if ((j * vertSpacing <= 20) && (j * vertSpacing >= -20))
+                { 
+                    Debug.Log("entered inner loop");
+                    Vector3 position = new Vector3(i * spacing, 0, j * vertSpacing);
+                    GameObject obj = Instantiate(gridObject, position, Quaternion.identity);
+                    if (!obj) Debug.LogError("Failed to instantiate gridObject!");
+                }
 
             }
         }
